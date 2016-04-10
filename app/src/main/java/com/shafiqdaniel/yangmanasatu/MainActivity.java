@@ -8,20 +8,34 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button startButton;
+    Button startBtn;
+    Button aboutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startButton = (Button) findViewById(R.id.start_button);
-        startButton.setOnClickListener(new View.OnClickListener() {
+        startBtn = (Button) findViewById(R.id.start_button);
+        aboutBtn = (Button) findViewById(R.id.about_button);
+
+        startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent activityChangeIntent = new Intent(MainActivity.this, QuestionActivity.class);
                 startActivity(activityChangeIntent);
             }
         });
+
+        aboutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activityChangeIntent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(activityChangeIntent);
+            }
+        });
+
+
+
     }
 
 

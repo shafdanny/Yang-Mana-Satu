@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Yang Mana Satu</string>
     <string name="start">Mula</string>
+    <string name="about">Aplikasi dibina oleh SNDev. Sebarang komen atau cadangan boleh dilakukan di sini</string>
 </resources>
