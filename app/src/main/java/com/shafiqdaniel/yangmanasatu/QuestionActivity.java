@@ -42,16 +42,16 @@ public class QuestionActivity extends AppCompatActivity {
             String text = (String) textView.getText();
             if(text.equals(correctAnswer)) {
                 incrementScore();
-                Intent reload = getIntent();
-                reload.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                countDownTimer.cancel();
-                reload.putExtra("currentScore", score);
-                finish();
-                startActivity(reload);
+                refreshQuestion();
             }
         }
     };
 
+    public void refreshQuestion() {
+        countDownTimer.cancel();
+        initAnswerButton();
+        countDownTimer.start();
+    }
 
 
     private void incrementScore() {
