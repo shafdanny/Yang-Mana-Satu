@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="states_name">
+        <item>Selangor</item>
+        <item>Pahang</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Johor</item>
+        <item>Kelantan</item>
+        <item>Kedah</item>
+        <item>Melaka</item>
+        <item>Negeri Sembilan</item>
+        <item>Perlis</item>
+        <item>Perak</item>
+        <item>Terangganu</item>
+        <item>Pulau Pinang</item>
+
+    </string-array>
+</resources>

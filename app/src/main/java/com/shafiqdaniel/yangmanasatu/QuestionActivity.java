@@ -36,7 +36,7 @@ public class QuestionActivity extends AppCompatActivity {
     int timerMax;
     int score;
 
-    String[] option = {"Selangor", "Kedah", "Kelantan", "Johor", "Pahang", "Sabah", "Sarawak" };
+    String[] option;
     String correctAnswer = "Selangor";
 
     Button.OnClickListener answerButtonListener = new View.OnClickListener() {
@@ -82,6 +82,8 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.question_answer);
         int savedScore = 0;
         thisActivity = this;
+
+        option = getResources().getStringArray(R.array.states_name);
         initAnswerButton();
 
         timerMax = getResources().getInteger(R.integer.timerMax);
