@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.TypedArrayUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -30,19 +31,16 @@ public class QuestionActivity extends AppCompatActivity {
     int timerMax;
     int score;
 
-    String[] option = {"Selangor", "Kedah", "Kelantan", "Johor", "Pahang" };
-    String next = "Selangor";
+    String[] option = {"Selangor", "Kedah", "Kelantan", "Johor", "Pahang", "Sabah", "Sarawak" };
+    String correctAnswer = "Selangor";
 
     Button.OnClickListener answerButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             TextView textView = (TextView) findViewById(v.getId());
             String text = (String) textView.getText();
-            if(text.equals(next)){
-                System.out.println("Selangor clicked");
-
+            if(text.equals(correctAnswer)) {
                 incrementScore();
-
             }
         }
     };
@@ -70,35 +68,37 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private void initAnswerButton() {
-        Button ansBtn1 = (Button) findViewById(R.id.choice1);
-        Button ansBtn2 = (Button) findViewById(R.id.choice2);
-        Button ansBtn3 = (Button) findViewById(R.id.choice3);
-        Button ansBtn4 = (Button) findViewById(R.id.choice4);
+        Button[] ansBtn = new Button[4];
+        ansBtn[0] = (Button) findViewById(R.id.choice1);
+        ansBtn[1] = (Button) findViewById(R.id.choice2);
+        ansBtn[2] = (Button) findViewById(R.id.choice3);
+        ansBtn[3] = (Button) findViewById(R.id.choice4);
 
         String[] pickedAnswerOptions = pickNRandom(option, 4);
 
-        ansBtn1.setText(pickedAnswerOptions[0]);
-        ansBtn2.setText(pickedAnswerOptions[1]);
-        ansBtn3.setText(pickedAnswerOptions[2]);
-        ansBtn4.setText(pickedAnswerOptions[3]);
+        ansBtn[0].setText(pickedAnswerOptions[0]);
+        ansBtn[1].setText(pickedAnswerOptions[1]);
+        ansBtn[2].setText(pickedAnswerOptions[2]);
+        ansBtn[3].setText(pickedAnswerOptions[3]);
 
-        ansBtn1.setOnClickListener(answerButtonListener);
-        ansBtn2.setOnClickListener(answerButtonListener);
-        ansBtn3.setOnClickListener(answerButtonListener);
-        ansBtn4.setOnClickListener(answerButtonListener);
+        ansBtn[0].setOnClickListener(answerButtonListener);
+        ansBtn[1].setOnClickListener(answerButtonListener);
+        ansBtn[2].setOnClickListener(answerButtonListener);
+        ansBtn[3].setOnClickListener(answerButtonListener);
     }
 
-    public static String[] pickNRandom(String[] array, int n) {
+    public String[] pickNRandom(String[] array, int n) {
+
 
         List<String> list = new ArrayList<String>(array.length);
         for (String i : array)
             list.add(i);
         Collections.shuffle(list);
+        list.remove(correctAnswer);
 
         String[] answer = new String[n];
         for (int i = 0; i < n; i++)
             answer[i] = list.get(i);
-        Arrays.sort(answer);
 
         return answer;
     }
@@ -123,5 +123,11 @@ public class QuestionActivity extends AppCompatActivity {
     private void popupRestart() {
         Intent popupIntent = new Intent(QuestionActivity.this, RestartPopupActivity.class);
         startActivity(popupIntent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        countDownTimer.cancel();
     }
 }
