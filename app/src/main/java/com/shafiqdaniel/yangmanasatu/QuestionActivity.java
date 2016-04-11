@@ -48,6 +48,9 @@ public class QuestionActivity extends AppCompatActivity {
                 incrementScore();
                 saveHighScore();
                 refreshQuestion();
+            } else {
+                countDownTimer.cancel();
+                popupRestart();
             }
         }
     };
