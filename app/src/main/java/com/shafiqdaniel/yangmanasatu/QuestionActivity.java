@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -16,7 +17,10 @@ public class QuestionActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     CountDownTimer countDownTimer;
+    TextView scoreTextView;
+
     int timerMax;
+    int score;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +29,10 @@ public class QuestionActivity extends AppCompatActivity {
 
         timerMax = getResources().getInteger(R.integer.timerMax);
 
+        scoreTextView = (TextView) findViewById(R.id.score_textview);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        score = 0;
+        scoreTextView.setText(Integer.toString(score));
         progressBar.setProgress(timerMax);
 
     }
@@ -49,7 +56,6 @@ public class QuestionActivity extends AppCompatActivity {
 
     private void popupRestart() {
         Intent popupIntent = new Intent(QuestionActivity.this, RestartPopupActivity.class);
-        popupIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(popupIntent);
     }
 }
