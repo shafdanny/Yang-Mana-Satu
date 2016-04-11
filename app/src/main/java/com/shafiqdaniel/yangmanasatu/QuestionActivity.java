@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by shafiq on 10/04/16.
@@ -81,11 +82,20 @@ public class QuestionActivity extends AppCompatActivity {
         ansBtn[2].setText(pickedAnswerOptions[2]);
         ansBtn[3].setText(pickedAnswerOptions[3]);
 
+        Random r = new Random();
+        int rand = r.nextInt(ansBtn.length);
+
+        //System.out.println(">>RAND " + rand);
+
+        // Now set a random button with the correct answer
+        ansBtn[rand].setText(correctAnswer);
+
         ansBtn[0].setOnClickListener(answerButtonListener);
         ansBtn[1].setOnClickListener(answerButtonListener);
         ansBtn[2].setOnClickListener(answerButtonListener);
         ansBtn[3].setOnClickListener(answerButtonListener);
     }
+
 
     public String[] pickNRandom(String[] array, int n) {
 
