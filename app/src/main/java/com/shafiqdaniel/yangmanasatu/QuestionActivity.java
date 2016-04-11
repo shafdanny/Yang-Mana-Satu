@@ -1,7 +1,10 @@
 package com.shafiqdaniel.yangmanasatu;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -28,9 +31,10 @@ public class QuestionActivity extends AppCompatActivity {
     ProgressBar progressBar;
     CountDownTimer countDownTimer;
     TextView scoreTextView;
+    Activity thisActivity;
 
     int timerMax;
-    static int score;
+    int score;
 
     String[] option = {"Selangor", "Kedah", "Kelantan", "Johor", "Pahang", "Sabah", "Sarawak" };
     String correctAnswer = "Selangor";
@@ -42,10 +46,23 @@ public class QuestionActivity extends AppCompatActivity {
             String text = (String) textView.getText();
             if(text.equals(correctAnswer)) {
                 incrementScore();
+                saveHighScore();
                 refreshQuestion();
             }
         }
     };
+
+    private void saveHighScore() {
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.score_file_key), this.MODE_PRIVATE);
+        int savedHighScore = sharedPref.getInt(getString(R.string.saved_high_score), 0);
+
+        if(score > savedHighScore) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt(getString(R.string.saved_high_score), score);
+            editor.commit();
+        }
+
+    }
 
     public void refreshQuestion() {
         countDownTimer.cancel();
@@ -64,11 +81,7 @@ public class QuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_answer);
         int savedScore = 0;
-        if(getIntent().getExtras() != null) {
-            Bundle extras = getIntent().getExtras();
-            savedScore = extras.getInt("currentScore");
-            System.out.println(">> bundle score: " + savedScore);
-        }
+        thisActivity = this;
         initAnswerButton();
 
         timerMax = getResources().getInteger(R.integer.timerMax);
@@ -145,6 +158,9 @@ public class QuestionActivity extends AppCompatActivity {
 
     private void popupRestart() {
         Intent popupIntent = new Intent(QuestionActivity.this, RestartPopupActivity.class);
+        Bundle b = new Bundle();
+        b.putInt("score", score);
+        popupIntent.putExtras(b);
         startActivity(popupIntent);
     }
 

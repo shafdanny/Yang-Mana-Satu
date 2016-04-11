@@ -4,4 +4,9 @@
     <string name="about">Aplikasi dibina oleh SNDev. Sebarang komen atau cadangan boleh dilakukan di sini</string>
     <string name="restart">Cuba lagi ?</string>
     <string name="image_desc">Clue image</string>
+    <string name="saved_high_score"></string>
+    <string name="saved_high_score_default"></string>
+    <string name="score_mainview">Skor terbaik:</string>
+    <string name="score_file_key">com.shafiqdaniel.yangmanasatu.score</string>
+
 </resources>
