@@ -1,10 +1,12 @@
 package com.shafiqdaniel.yangmanasatu;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
@@ -29,6 +31,26 @@ public class QuestionActivity extends AppCompatActivity {
     int score;
 
     String[] option = {"Selangor", "Kedah", "Kelantan", "Johor", "Pahang" };
+    String next = "Selangor";
+
+    Button.OnClickListener answerButtonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            TextView textView = (TextView) findViewById(v.getId());
+            String text = (String) textView.getText();
+            if(text.equals(next)){
+                System.out.println("Selangor clicked");
+
+                incrementScore();
+
+            }
+        }
+    };
+
+    private void incrementScore() {
+        score++;
+        scoreTextView.setText(Integer.toString(score));
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +82,10 @@ public class QuestionActivity extends AppCompatActivity {
         ansBtn3.setText(pickedAnswerOptions[2]);
         ansBtn4.setText(pickedAnswerOptions[3]);
 
-
+        ansBtn1.setOnClickListener(answerButtonListener);
+        ansBtn2.setOnClickListener(answerButtonListener);
+        ansBtn3.setOnClickListener(answerButtonListener);
+        ansBtn4.setOnClickListener(answerButtonListener);
     }
 
     public static String[] pickNRandom(String[] array, int n) {
