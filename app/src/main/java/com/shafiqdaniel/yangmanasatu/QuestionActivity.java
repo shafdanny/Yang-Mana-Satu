@@ -30,7 +30,7 @@ public class QuestionActivity extends AppCompatActivity {
     TextView scoreTextView;
 
     int timerMax;
-    int score;
+    static int score;
 
     String[] option = {"Selangor", "Kedah", "Kelantan", "Johor", "Pahang", "Sabah", "Sarawak" };
     String correctAnswer = "Selangor";
@@ -42,9 +42,17 @@ public class QuestionActivity extends AppCompatActivity {
             String text = (String) textView.getText();
             if(text.equals(correctAnswer)) {
                 incrementScore();
+                Intent reload = getIntent();
+                reload.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                countDownTimer.cancel();
+                reload.putExtra("currentScore", score);
+                finish();
+                startActivity(reload);
             }
         }
     };
+
+
 
     private void incrementScore() {
         score++;
@@ -55,14 +63,19 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_answer);
-
+        int savedScore = 0;
+        if(getIntent().getExtras() != null) {
+            Bundle extras = getIntent().getExtras();
+            savedScore = extras.getInt("currentScore");
+            System.out.println(">> bundle score: " + savedScore);
+        }
         initAnswerButton();
 
         timerMax = getResources().getInteger(R.integer.timerMax);
 
         scoreTextView = (TextView) findViewById(R.id.score_textview);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
-        score = 0;
+        score = savedScore;
         scoreTextView.setText(Integer.toString(score));
         progressBar.setProgress(timerMax);
 
