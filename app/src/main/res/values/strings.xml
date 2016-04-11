@@ -8,5 +8,11 @@
     <string name="saved_high_score_default"></string>
     <string name="score_mainview">Skor terbaik:</string>
     <string name="score_file_key">com.shafiqdaniel.yangmanasatu.score</string>
+    <string name="about_button">Tentang</string>
+    <string name="reset_score_button">Padam Skor Tertinggi</string>
+    <string name="reset_score_prompt_message">Anda pasti untuk padam skor tertinggi ?</string>
+    <string name="high_score_text">Skor tertinggi:</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
 
 </resources>

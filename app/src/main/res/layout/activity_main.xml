@@ -19,11 +19,19 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tentang"
+        android:text="@string/about_button"
         android:drawableLeft="@drawable/ic_help_outline_black_24dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:id="@+id/about_button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_score_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/reset_score_button"/>
 
     <TextView
         android:layout_width="wrap_content"
