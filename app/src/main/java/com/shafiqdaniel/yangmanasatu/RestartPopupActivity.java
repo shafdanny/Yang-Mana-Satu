@@ -31,7 +31,7 @@ public class RestartPopupActivity extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.8), (int)(height*0.4));
+        getWindow().setLayout((int)(width*0.8), (int)(height*0.5));
 
         popupTextView = (TextView) findViewById(R.id.popup_score_text);
         correctAnswerTextView = (TextView) findViewById(R.id.popup_correct_answer_text);
@@ -47,8 +47,7 @@ public class RestartPopupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent restart = new Intent(RestartPopupActivity.this, QuestionActivity.class);
-                restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
+                restart.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(restart);
                 finish();
             }
@@ -58,7 +57,7 @@ public class RestartPopupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent exit = new Intent(RestartPopupActivity.this, MainActivity.class);
-                exit.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                exit.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(exit);
                 finish();
             }

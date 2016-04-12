@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent activityChangeIntent = new Intent(MainActivity.this, QuestionActivity.class);
                 startActivity(activityChangeIntent);
+                getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
             }
         });
 

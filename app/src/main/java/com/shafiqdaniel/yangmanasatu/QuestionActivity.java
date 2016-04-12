@@ -114,6 +114,8 @@ public class QuestionActivity extends AppCompatActivity {
         score = savedScore;
         scoreTextView.setText(Integer.toString(score));
         progressBar.setProgress(timerMax);
+
+        getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
     }
 
     private void initAnswerButton() {
