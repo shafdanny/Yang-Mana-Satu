@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Yang Mana Satu</string>
     <string name="start">Mula</string>
-    <string name="about">Aplikasi dibina oleh SNDev. Sebarang komen atau cadangan boleh dilakukan di sini</string>
+    <string name="about">Aplikasi dibina oleh SNDev.</string>
     <string name="restart">Cuba lagi ?</string>
     <string name="image_desc">Clue image</string>
     <string name="saved_high_score"></string>
