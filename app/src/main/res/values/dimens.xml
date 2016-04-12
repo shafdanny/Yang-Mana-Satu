@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="spacing_medium">1dp</dimen>
-    <dimen name="answer_button_height">60dp</dimen>
+    <dimen name="answer_button_height">80dp</dimen>
+    <dimen name="answer_text_size">30sp</dimen>
 
 </resources>

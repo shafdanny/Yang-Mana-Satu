@@ -80,6 +80,10 @@ public class QuestionActivity extends AppCompatActivity {
     public void refreshQuestion() {
         countDownTimer.cancel();
         initAnswerButton();
+        int newTimerMax = timerMax - (score*50);
+        System.out.println(">> TIMER MAX: " + newTimerMax);
+        countDownTimer = createCountDownTimer(newTimerMax);
+        progressBar.setMax(newTimerMax);
         countDownTimer.start();
     }
 
@@ -164,11 +168,8 @@ public class QuestionActivity extends AppCompatActivity {
         return answer;
     }
 
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-        countDownTimer = new CountDownTimer(timerMax, 10) {
+    public CountDownTimer createCountDownTimer(int max) {
+        return new CountDownTimer(max, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
                 progressBar.setProgress((int) millisUntilFinished);
@@ -179,6 +180,13 @@ public class QuestionActivity extends AppCompatActivity {
                 popupRestart();
             }
         };
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        countDownTimer = createCountDownTimer(timerMax);
 
         final LinearLayout layout = (LinearLayout)findViewById(R.id.question_answer_linear_layout);
 
