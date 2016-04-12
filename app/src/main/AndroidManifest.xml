@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".QuestionActivity"></activity>
         <activity android:name=".AboutActivity"></activity>
-        <activity android:name=".RestartPopupActivity"></activity>
+        <activity android:name=".RestartPopupActivity"
+            android:theme="@style/AppTheme.PopupTheme"></activity>
     </application>
 
 </manifest>

@@ -202,6 +202,7 @@ public class QuestionActivity extends AppCompatActivity {
         Intent popupIntent = new Intent(QuestionActivity.this, RestartPopupActivity.class);
         Bundle b = new Bundle();
         b.putInt("score", score);
+        b.putString("answer", correctAnswer);
         popupIntent.putExtras(b);
         startActivity(popupIntent);
     }

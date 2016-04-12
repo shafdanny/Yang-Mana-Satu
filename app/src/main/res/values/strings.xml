@@ -27,6 +27,8 @@
     <string name="sarawak">Sarawak</string>
     <string name="perak">Perak</string>
     <string name="melaka">Melaka</string>
+    <string name="try_again">Sekali lagi</string>
+    <string name="exit">Tamat</string>
 
 
 </resources>

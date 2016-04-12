@@ -1,13 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="1"
+    android:background="#1976d2">
 
-    <TextView
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/restart"
-        android:id="@+id/popup_text"
-        />
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        >
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/popup_correct_answer_text"
+                android:textColor="@color/whiteText"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/popup_score_text"
+                android:textColor="@color/whiteText"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/restart"
+                android:id="@+id/try_again_text"
+                android:textColor="@color/whiteText"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <Button
+            android:background="@color/greenAccent"
+            android:drawableTop="@drawable/ic_refresh_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/try_again"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/restart_button"
+            android:padding="@dimen/activity_horizontal_margin"
+            />
+        <Button
+            android:background="@color/colorAccent"
+            android:drawableTop="@drawable/ic_x_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exit"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/exit_button"
+            android:padding="@dimen/activity_vertical_margin"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
