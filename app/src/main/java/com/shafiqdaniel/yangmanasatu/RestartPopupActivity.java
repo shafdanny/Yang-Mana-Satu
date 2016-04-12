@@ -37,7 +37,9 @@ public class RestartPopupActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(RestartPopupActivity.this, MainActivity.class));
+        Intent backIntent = new Intent(RestartPopupActivity.this, MainActivity.class);
+        backIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(backIntent);
         finish();
     }
 }

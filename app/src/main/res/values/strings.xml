@@ -14,5 +14,19 @@
     <string name="high_score_text">Skor tertinggi:</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
+    <string name="selangor">Selangor</string>
+    <string name="negerisembilan">Negeri Sembilan</string>
+    <string name="penang">Pulau Pinang</string>
+    <string name="kedah">Kedah</string>
+    <string name="kelantan">Kelantan</string>
+    <string name="perlis">Perlis</string>
+    <string name="johor">Johor</string>
+    <string name="pahang">Pahang</string>
+    <string name="terengganu">Terengganu</string>
+    <string name="sabah">Sabah</string>
+    <string name="sarawak">Sarawak</string>
+    <string name="perak">Perak</string>
+    <string name="melaka">Melaka</string>
+
 
 </resources>

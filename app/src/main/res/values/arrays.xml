@@ -2,19 +2,19 @@
 <resources>
     <string-array
         name="states_name">
-        <item>Selangor</item>
-        <item>Pahang</item>
-        <item>Sabah</item>
-        <item>Sarawak</item>
-        <item>Johor</item>
-        <item>Kelantan</item>
-        <item>Kedah</item>
-        <item>Melaka</item>
-        <item>Negeri Sembilan</item>
-        <item>Perlis</item>
-        <item>Perak</item>
-        <item>Terangganu</item>
-        <item>Pulau Pinang</item>
+        <item>@string/sabah</item>
+        <item>@string/sarawak</item>
+        <item>@string/selangor</item>
+        <item>@string/kedah</item>
+        <item>@string/johor</item>
+        <item>@string/kelantan</item>
+        <item>@string/pahang</item>
+        <item>@string/melaka</item>
+        <item>@string/negerisembilan</item>
+        <item>@string/perlis</item>
+        <item>@string/perak</item>
+        <item>@string/terengganu</item>
+        <item>@string/penang</item>
 
     </string-array>
 </resources>

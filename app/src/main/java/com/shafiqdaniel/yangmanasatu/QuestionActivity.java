@@ -5,17 +5,24 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.content.res.TypedArrayUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.shafiqdaniel.yangmanasatu.model.FlagDrawable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,12 +39,15 @@ public class QuestionActivity extends AppCompatActivity {
     CountDownTimer countDownTimer;
     TextView scoreTextView;
     Activity thisActivity;
+    ImageView imageView;
+    FlagDrawable flagDrawable;
 
     int timerMax;
     int score;
 
     String[] option;
-    String correctAnswer = "Selangor";
+    String correctAnswer;
+
 
     Button.OnClickListener answerButtonListener = new View.OnClickListener() {
         @Override
@@ -83,8 +93,12 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_answer);
+
+        imageView = (ImageView) findViewById(R.id.image_view_qa);
+
         int savedScore = 0;
         thisActivity = this;
+        flagDrawable = new FlagDrawable(this);
 
         option = getResources().getStringArray(R.array.states_name);
         initAnswerButton();
@@ -96,10 +110,16 @@ public class QuestionActivity extends AppCompatActivity {
         score = savedScore;
         scoreTextView.setText(Integer.toString(score));
         progressBar.setProgress(timerMax);
-
     }
 
     private void initAnswerButton() {
+        // Pick a random flag, and set it as correct answer
+        Random randFlag = new Random();
+        String selectedFlagName = option[randFlag.nextInt(option.length)];
+        Drawable correctFlag = flagDrawable.getFlag(selectedFlagName);
+        imageView.setImageDrawable(correctFlag);
+        correctAnswer = selectedFlagName;
+
         Button[] ansBtn = new Button[4];
         ansBtn[0] = (Button) findViewById(R.id.choice1);
         ansBtn[1] = (Button) findViewById(R.id.choice2);
@@ -147,6 +167,7 @@ public class QuestionActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+
         countDownTimer = new CountDownTimer(timerMax, 10) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -158,6 +179,22 @@ public class QuestionActivity extends AppCompatActivity {
                 popupRestart();
             }
         };
+
+        final LinearLayout layout = (LinearLayout)findViewById(R.id.question_answer_linear_layout);
+
+        ViewTreeObserver vto = layout.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+            @Override
+            public void onGlobalLayout() {
+                layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int width  = layout.getMeasuredWidth();
+                int height = layout.getMeasuredHeight();
+                countDownTimer.start();
+
+            }
+        });
+
         countDownTimer.start();
     }
 
